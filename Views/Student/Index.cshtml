@@ -1,0 +1,23 @@
+﻿@model List<Student>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Address</th>
+            <th>Goto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model) {
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.Address</td>
+                <td> <a href="Student/Details/@student.Id">More</a> </td>
+            </tr>
+        }
+     
+     </tbody>
+</table>

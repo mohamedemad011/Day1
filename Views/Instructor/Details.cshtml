@@ -1,0 +1,23 @@
+﻿@using Day1.ViewModels
+@model Instructor
+@{
+    Layout = "_TestLayout";
+}
+
+<h2>Instructor</h2>
+<div class="card" style="width: 30rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="">@Model.FName @Model.LName</h5>
+        <h6 class="card-title">@Model.Age</h6>
+        <select id="courseDropdown">
+            <option value="" disabled selected>None</option>
+            @foreach (var crsName in Model.Courses)
+            {
+                <option> @crsName.Name </option>
+            }
+        </select>
+    </div>
+</div>
+
+

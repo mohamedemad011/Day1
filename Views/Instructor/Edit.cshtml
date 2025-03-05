@@ -1,0 +1,55 @@
+﻿@using Day1.ViewModels
+@model InstructorEditVM
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<form action="/Instructor/Edit" method="post" >
+    <input type="hidden" name="Id" value="@Model?.Id" />
+
+    <div class="form-group">
+        <label for="FName">First Name</label>
+        <input type="text" id="FName" name="FName" class="form-control" value="@Model?.FName" />
+    </div>
+
+    <div class="form-group">
+        <label for="LName">Last Name</label>
+        <input type="text" id="LName" name="LName" class="form-control" value="@Model?.LName" />
+    </div>
+
+    <div class="form-group">
+        <label for="Salary">Salary</label>
+        <input type="number" id="Salary" name="Salary" class="form-control" value="@Model?.Salary" />
+    </div>
+
+    <div class="form-group">
+        <label for="Img">Upload Image</label>
+        <input type="text" id="Img" name="Img" value="@Model?.Img" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Age">Age</label>
+        <input type="number" id="Age" name="Age" class="form-control" value="@Model?.Age" />
+    </div>
+
+    <div class="form-group">
+        <label for="DeptId">Department</label>
+        <select id="DeptId" name="DeptId" class="form-select">
+            <option disabled value="">-- Select Department --</option>
+            @foreach (var department in Model.departments)
+            {
+                @if (Model.DeptId == department.Id){
+                     <option selected value="@department.Id">@department.Name</option>
+                }
+                else{
+                    <option value="@department.Id">@department.Name</option>
+                }
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+
+

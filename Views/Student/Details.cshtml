@@ -1,0 +1,46 @@
+﻿@using Day1.ViewModels
+@model StudentAndCourseVM
+
+<h2>Students</h2>
+
+<h3>Session, Name: @Model.curCookieName</h3>
+<div class="card" style="width: 30rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="">@Model.Name</h5>
+        <h6 class="card-title">@Model.Age</h6>
+        <select id="courseDropdown">
+            <option value="" disabled selected>None</option>
+            @foreach (var crsName in Model.Courses)
+            {
+                <option value="@crsName.CourseName"
+                        data-degree="@crsName.Degree"
+                        data-min-degree="@crsName.MinDegree">
+                    @crsName.CourseName
+                </option>
+            }
+        </select>
+        <p id="CourseDeg"></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('courseDropdown').addEventListener('change', function () {
+        const selectedOption = this.options[this.selectedIndex];
+        const courseName = selectedOption.value;
+        const courseDegree = selectedOption.getAttribute('data-degree');
+        const minDegree = selectedOption.getAttribute('data-min-degree');
+
+        const courseTextDiv = document.getElementById('CourseText');
+        const courseDegDiv = document.getElementById('CourseDeg');
+
+        courseDegDiv.textContent = `Student Degree: ${courseDegree}, Min Degree To Pass: ${minDegree}`;
+
+
+        if (parseInt(courseDegree) < parseInt(minDegree)) {
+            courseDegDiv.style.color = 'red'; 
+        } else {
+            courseDegDiv.style.color = 'green'; 
+        }
+    });
+</script>
